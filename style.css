@@ -46,5 +46,61 @@ body {
 /****** END GLOBAL STYLES  ******/
 
 /****** HEADER  ******/
+h1 {
+  display: flex;
+  justify-content: center;
+  letter-spacing: 3px;
+}
 
 /****** END HEADER  ******/
+
+/****** MAIN  ******/
+
+.cards-container {
+  display: flex;
+  align-items: space-between;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.pokemon-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--dragon);
+  padding: 5px;
+  border-radius: 20px;
+}
+
+.img-container {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 80%;
+  width: 70px;
+  height: 70px;
+}
+
+.info {
+  margin-top: 5px;
+}
+
+.number {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  font-size: 0.8em;
+  padding: 2px 5px;
+  text-align: center;
+}
+
+.name {
+  font-size: 0.8em;
+  padding: 2px 5px;
+  text-align: center;
+}
+
+.type {
+  font-size: 0.8em;
+  padding: 2px 5px;
+  text-align: center;
+}
+
+/****** END MAIN  ******/
