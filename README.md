@@ -32,7 +32,7 @@ Tasks:
   - search button
 - section
   - each pokemon will be a separate article
-  - card will be contain
+  - card will contain
     - img
     - number
     - name
