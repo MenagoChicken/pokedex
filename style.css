@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Maiden+Orange&display=swap");
+
 :root {
   --background: #fefae0;
   --normal: #a8a878;
@@ -22,12 +24,27 @@
   --shadow: #682a68; /* dark poison - couldn't find the right one */
 }
 
+/*********************************************** 
+FONT CSS RULE
+
+font-family: 'Maiden Orange', cursive;
+************************************************/
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/****** GLOBAL STYLES  ******/
+
 body {
   background-color: var(--background);
+  font-family: "Maiden Orange", cursive;
 }
+
+/****** END GLOBAL STYLES  ******/
+
+/****** HEADER  ******/
+
+/****** END HEADER  ******/
