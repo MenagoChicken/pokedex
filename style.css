@@ -30,68 +30,135 @@ FONT CSS RULE
 font-family: 'Maiden Orange', cursive;
 ************************************************/
 
+:root {
+  --primary: #ffce00;
+  --secondary: #fe4880;
+  --dark: #212121;
+  --light: #f3f3f3;
+}
+
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-/****** GLOBAL STYLES  ******/
-
-body {
-  background-color: var(--background);
+main {
   font-family: "Maiden Orange", cursive;
-  max-width: 600px;
-  margin: auto;
+  width: 100%;
+  min-height: 100vh;
 }
-/****** END GLOBAL STYLES  ******/
 
-/****** HEADER  ******/
-h1 {
+.card {
+  margin: 10px auto 0;
+  width: 180px;
+  height: 250px;
+  perspective: 800px;
+}
+
+.card__inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.card__inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card__face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
+}
+
+.card__face--front {
+  background-image: linear-gradient(
+    to bottom right,
+    var(--primary),
+    var(--secondary)
+  );
   display: flex;
+  align-items: center;
   justify-content: center;
-  letter-spacing: 3px;
 }
 
-/****** END HEADER  ******/
+.card__face--front h2 {
+  color: #fff;
+  font-size: 32px;
+}
 
-/****** MAIN  ******/
+.card__face--back {
+  background-color: var(--light);
+  transform: rotateY(180deg);
+}
 
-/* 
-.img-container {
+.card__content {
+  width: 100%;
+  height: 100%;
+}
+
+.card__header {
+  position: relative;
+  padding: 5px 2px 5px;
+}
+
+.card__header:after {
+  content: "";
+  display: block;
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 80%;
-  width: 70px;
-  height: 70px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+    to bottom left,
+    var(--primary) 10%,
+    var(--secondary) 115%
+  );
+  z-index: -1;
+  border-radius: 0px 0px 50% 0px;
 }
 
-.number {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  font-size: 0.8em;
-  padding: 2px 5px;
+.pp {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: auto;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 5px solid #fff;
+  object-fit: cover;
+}
+
+.card__header h2 {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 900;
+  text-transform: uppercase;
   text-align: center;
 }
 
-
-.info {
-  margin-top: 5px;
-}
-
-
-
-.name {
-  font-size: 0.8em;
-  padding: 2px 5px;
+.card__body {
   text-align: center;
 }
 
-.type {
-  font-size: 0.8em;
-  padding: 2px 5px;
-  text-align: center;
-} */
+.card__body h3 {
+  color: var(--dark);
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
 
-/****** END MAIN  ******/
+.card__body p {
+  color: var(--dark);
+  font-size: 18px;
+  line-height: 1.4;
+}
