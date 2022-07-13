@@ -129,12 +129,10 @@ main {
 
 .pp {
   display: block;
-  width: 64px;
-  height: 64px;
   margin: auto;
   border-radius: 50%;
   background-color: #fff;
-  border: 5px solid #fff;
+  /* border: 5px solid #fff; */
   object-fit: cover;
 }
 
