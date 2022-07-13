@@ -5,15 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script defer src="app.js"></script>
     <title>Pokedex</title>
   </head>
   <body>
     <header>
       <h1>PoKeDeX</h1>
     </header>
-    <main>
-      <div class="cards-container">
-        <div class="pokemon-card">
+    <div class="cards-container">
+      <div class="card">
+        <article class="pokemon-card card__face--front">
           <div class="img-container">
             <img src="./img/132.png" alt="Ditto" / height="64px" width="64px">
           </div>
@@ -22,8 +23,11 @@
             <p class="name">Name</p>
             <p class="type">Type</p>
           </section>
-        </div>
+        </article>
+        <article class="pokemon-card card__face--back">
+          <p>Description or something else</p>
+        </article>
       </div>
-    </main>
+    </div>
   </body>
 </html>
