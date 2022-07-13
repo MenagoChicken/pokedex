@@ -56,58 +56,8 @@ h1 {
 /****** END HEADER  ******/
 
 /****** MAIN  ******/
-.cards-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  max-width: 600px;
-  margin: 10px;
-}
 
-.scene {
-  display: inline-block;
-  width: 110px;
-  height: 160px;
-  margin: auto;
-}
-
-.pokemon-card {
-  position: relative;
-  width: 100px;
-  height: 150px;
-  margin: auto;
-  cursor: pointer;
-  transform-style: preserve-3d;
-  transform-origin: center right;
-  transition: transform 1s;
-}
-
-.pokemon-card.is-flipped {
-  transform: translateX(-100%) rotateY(-180deg);
-}
-
-.card-face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  line-height: 250px;
-  border-radius: 20px;
-  color: white;
-  text-align: center;
-  font-weight: bold;
-  font-size: 40px;
-  backface-visibility: hidden;
-}
-
-.face--front {
-  background: crimson;
-}
-
-.face--back {
-  background: slateblue;
-  transform: rotateY(180deg);
-}
-
+/* 
 .img-container {
   position: absolute;
   background-color: rgba(255, 255, 255, 0.3);
@@ -125,7 +75,7 @@ h1 {
   text-align: center;
 }
 
-/*
+
 .info {
   margin-top: 5px;
 }
