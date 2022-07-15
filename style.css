@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Maiden+Orange&display=swap");
 
 :root {
-  --background: #fefae0;
+  --background: #fbec88;
   --primary: #fbe8bd;
   --normal: #a8a878;
   --fighting: #c03028;
@@ -31,15 +31,13 @@ FONT CSS RULE
 font-family: 'Maiden Orange', cursive;
 ************************************************/
 
-:root {
-  --secondary: #fe4880;
-  --dark: #212121;
-  --light: #f3f3f3;
-}
-
 * {
   margin: 0;
   padding: 0;
+}
+
+body {
+  background-color: var(--background);
 }
 
 main {
@@ -49,7 +47,7 @@ main {
   margin: auto;
 }
 
-.cards-contaioner {
+.cards-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -79,7 +77,7 @@ main {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden;
+  /* -webkit-backface-visibility: hidden; */
   backface-visibility: hidden;
   overflow: hidden;
   border-radius: 16px;
@@ -90,7 +88,7 @@ main {
   background-image: linear-gradient(
     to bottom right,
     var(--primary),
-    var(--steel)
+    var(--steel) 50%
   );
   display: flex;
   align-items: center;
@@ -116,11 +114,10 @@ main {
   bottom: 0;
   background-image: linear-gradient(
     to bottom left,
-    var(--primary) 10%,
-    var(--steel) 115%
+    var(--primary),
+    var(--steel) 50%
   );
   z-index: -1;
-  border-radius: 0px 0px 50% 0px;
 }
 
 .pokemon-image {
