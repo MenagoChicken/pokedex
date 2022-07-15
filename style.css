@@ -2,6 +2,7 @@
 
 :root {
   --background: #fefae0;
+  --primary: #fbe8bd;
   --normal: #a8a878;
   --fighting: #c03028;
   --flying: #a890f0;
@@ -31,7 +32,6 @@ font-family: 'Maiden Orange', cursive;
 ************************************************/
 
 :root {
-  --primary: #ffce00;
   --secondary: #fe4880;
   --dark: #212121;
   --light: #f3f3f3;
@@ -90,31 +90,20 @@ main {
   background-image: linear-gradient(
     to bottom right,
     var(--primary),
-    var(--secondary)
+    var(--steel)
   );
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.card__face--front h2 {
-  color: #fff;
-  font-size: 32px;
-}
-
 .card__face--back {
-  background-color: var(--light);
   transform: rotateY(180deg);
 }
 
 .card__content {
   width: 100%;
   height: 100%;
-}
-
-.card__header {
-  position: relative;
-  padding: 5px 2px 5px;
 }
 
 .card__header:after {
@@ -128,42 +117,41 @@ main {
   background-image: linear-gradient(
     to bottom left,
     var(--primary) 10%,
-    var(--secondary) 115%
+    var(--steel) 115%
   );
   z-index: -1;
   border-radius: 0px 0px 50% 0px;
 }
 
-.pp {
+.pokemon-image {
   display: block;
   margin: auto;
+  margin-top: 4px;
   border-radius: 50%;
   background-color: #fff;
-  border: 5px solid #fff;
   object-fit: cover;
 }
 
 .card__header h2 {
-  color: #fff;
-  font-size: 32px;
-  font-weight: 900;
+  color: rgb(0, 0, 0);
+  margin-top: 10px;
+  text-decoration: underline;
+  font-size: 28px;
   text-transform: uppercase;
   text-align: center;
 }
 
 .card__body {
   text-align: center;
+  margin-top: 5px;
 }
 
 .card__body h3 {
-  color: var(--dark);
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 15px;
+  color: rgb(0, 0, 0);
+  margin-top: 20px;
 }
 
 .card__body p {
-  color: var(--dark);
-  font-size: 18px;
-  line-height: 1.4;
+  color: rgb(0, 0, 0);
+  margin-top: 7px;
 }
