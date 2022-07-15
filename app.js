@@ -2,11 +2,19 @@
 const numberOfPokemons = 150;
 let pokemonContainer = document.querySelector("main");
 
-//fetch api
-let getPokemons = fetch("https://pokeapi.co/api/v2/pokemon/");
+// get one pokemon
+const getPokemon = (id) =>
+  fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((res) => {
+    if (!res.ok) {
+      console.log("ERROR FROM API");
+      errorMessageSomethingWrongWithAPI();
+    } else {
+      console.log("SUCCES");
+    }
+    res.json().then((data) => console.log(data));
+  });
 
-console.log(getPokemons);
-console.log(pokemonContainer);
+getPokemon(1);
 
 //select all cards
 const cards = document.querySelectorAll(".card__inner");
@@ -17,3 +25,7 @@ cards.forEach((card) => {
     card.classList.toggle("is-flipped");
   });
 });
+
+function errorMessageSomethingWrongWithAPI() {
+  pokemonContainer.innerHTML = `<p class="errorMessage">Something went wrong with API - SORRY!</p>`;
+}

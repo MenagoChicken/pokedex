@@ -152,3 +152,16 @@ main {
   color: rgb(0, 0, 0);
   margin-top: 7px;
 }
+
+.errorMessage {
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  height: 10%;
+  font-size: 13px;
+  border: 1px solid;
+  margin: auto;
+  padding: 30px;
+  color: #d8000c;
+  background-color: #ffbaba;
+}
