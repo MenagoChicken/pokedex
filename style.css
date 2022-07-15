@@ -44,8 +44,15 @@ font-family: 'Maiden Orange', cursive;
 
 main {
   font-family: "Maiden Orange", cursive;
-  width: 100%;
   min-height: 100vh;
+  max-width: 800px;
+  margin: auto;
+}
+
+.cards-contaioner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -132,7 +139,7 @@ main {
   margin: auto;
   border-radius: 50%;
   background-color: #fff;
-  /* border: 5px solid #fff; */
+  border: 5px solid #fff;
   object-fit: cover;
 }
 
