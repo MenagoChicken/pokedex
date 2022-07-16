@@ -1,6 +1,30 @@
 //declaring variables and constants
-const numberOfPokemons = 150;
+const numberOfPokemons = 3;
 let pokemonContainer = document.querySelector("main");
+let cards;
+
+const colors = {
+  normal: "#a8a878",
+  fighting: "#c03028",
+  flying: "#a890f0",
+  poison: "#a040a0",
+  ground: "#e0c068",
+  rock: "#b8a038",
+  bug: "#a8b820",
+  ghost: "#705898",
+  steel: "#b8b8d0",
+  fire: "#f08030",
+  water: "#6890f0",
+  grass: "#78c850",
+  electric: "#f8d030",
+  psychic: "#f85888",
+  ice: "#98d8d8",
+  dragon: "#7038f8",
+  dark: "#705848",
+  fairy: "#ee99ac",
+  unknown: "#68a090",
+  shadow: "#682a68",
+};
 
 const fetchPokemons = async () => {
   for (let index = 1; index <= numberOfPokemons; index++) {
@@ -16,10 +40,6 @@ const getPokemon = async (id) => {
   createPokemonCard(pokemon);
 };
 
-function errorMessageSomethingWrongWithAPI() {
-  pokemonContainer.innerHTML = `<p class="errorMessage">Something went wrong with API - SORRY!</p>`;
-}
-
 // image pokemon?.sprites?.front_default
 // id pokemon?.id
 // name pokemon?.name
@@ -27,13 +47,21 @@ function errorMessageSomethingWrongWithAPI() {
 // stat pokemon?.stats[0]?.base_stat
 
 function createPokemonCard(pokemon) {
-  console.log("create pokemon Card");
-  console.log(Object.values(pokemon.types));
   pokemonContainer.innerHTML =
     pokemonContainer.innerHTML +
     `<div class="card">
   <div class="card__inner">
-    <div class="card__face card__face--front">
+    <div class="card__face card__face--front" 
+    style= " 
+      background-image: linear-gradient(
+      to bottom right,
+      var(--primary),
+      ${colors[pokemon?.types[0]?.type["name"]]} 80%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    " >
       <div class="card__content">
         <div class="card__header">
           <img
@@ -73,20 +101,17 @@ function createPokemonCard(pokemon) {
 </div><p>`;
 }
 
+fullyLoaded = window.addEventListener("load", (e) => console.log(e));
+if (fullyLoaded) {
+  console.log("page is fully loaded");
+  //select all cards
+  cards = document.querySelectorAll(".card__inner");
+  //add onclick functionality to each card
+  cards.forEach((card) => {
+    card.addEventListener("click", () => {
+      card.classList.toggle("is-flipped");
+    });
+  });
+}
+
 fetchPokemons();
-
-//select all cards
-const cards = document.querySelectorAll(".card__inner");
-
-// add onclick functionality to each card
-cards.forEach((card) => {
-  card.addEventListener("click", () => {
-    card.classList.toggle("is-flipped");
-  });
-});
-
-cards.forEach((card) => {
-  card.addEventListener("click", () => {
-    card.classList.toggle("is-flipped");
-  });
-});

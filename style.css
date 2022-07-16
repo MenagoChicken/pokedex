@@ -1,28 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Maiden+Orange&display=swap");
 
 :root {
-  --background: #fbec88;
-  --primary: #fbe8bd;
-  --normal: #a8a878;
-  --fighting: #c03028;
-  --flying: #a890f0;
-  --poison: #a040a0;
-  --ground: #e0c068;
-  --rock: #b8a038;
-  --bug: #a8b820;
-  --ghost: #705898;
-  --steel: #b8b8d0;
-  --fire: #f08030;
-  --water: #6890f0;
-  --grass: #78c850;
-  --electric: #f8d030;
-  --psychic: #f85888;
-  --ice: #98d8d8;
-  --dragon: #7038f8;
-  --dark: #705848;
-  --fairy: #ee99ac;
-  --unknown: #68a090;
-  --shadow: #682a68; /* dark poison - couldn't find the right one */
+  --background: #fdf5df;
+  --primary: #f4ccb6;
+  --h1: #5ebec4;
 }
 
 /*********************************************** 
@@ -38,6 +19,17 @@ font-family: 'Maiden Orange', cursive;
 
 body {
   background-color: var(--background);
+}
+
+h1 {
+  font-family: "Maiden Orange", cursive;
+  max-width: 800px;
+  text-align: center;
+  color: var(--h1);
+  font-weight: bold;
+  font-size: 60px;
+  letter-spacing: 5px;
+  margin: 30px auto;
 }
 
 main {
@@ -84,7 +76,7 @@ main {
   box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
 }
 
-.card__face--front {
+/* .card__face--front {
   background-image: linear-gradient(
     to bottom right,
     var(--primary),
@@ -93,7 +85,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 .card__face--back {
   transform: rotateY(180deg);
@@ -151,9 +143,10 @@ main {
 .card__body p {
   color: rgb(0, 0, 0);
   margin-top: 7px;
+  text-transform: uppercase;
 }
 
-.errorMessage {
+/* .errorMessage {
   font-family: Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   font-weight: bold;
@@ -164,4 +157,4 @@ main {
   padding: 30px;
   color: #d8000c;
   background-color: #ffbaba;
-}
+} */
