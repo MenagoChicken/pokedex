@@ -32,9 +32,16 @@ function errorMessageSomethingWrongWithAPI() {
   pokemonContainer.innerHTML = `<p class="errorMessage">Something went wrong with API - SORRY!</p>`;
 }
 
+// image pokemon?.sprites?.front_default
+// id pokemon?.id
+// name pokemon?.name
+// type pokemon?.types[0]?.type["name"]
+// stat pokemon?.stats[0]?.base_stat
+
 function createPokemonCard(pokemon) {
   console.log("create pokemon Card");
-  pokemonContainer.innerHTML = `<p>Pokemon id: ${pokemon.id} <p>`;
+  console.log(Object.values(pokemon.types));
+  pokemonContainer.innerHTML = `<p>Pokemon id: ${pokemon?.stats[0]?.base_stat} <p>`;
 }
 
 fetchPokemons();
