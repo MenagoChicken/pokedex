@@ -2,17 +2,19 @@
 const numberOfPokemons = 150;
 let pokemonContainer = document.querySelector("main");
 
+const fetchPokemons = async () => {
+  for (let index = 1; index <= numberOfPokemons; index++) {
+    getPokemon(index);
+  }
+};
+
 // get one pokemon
-const getPokemon = (id) =>
-  fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((res) => {
-    if (!res.ok) {
-      console.log("ERROR FROM API");
-      errorMessageSomethingWrongWithAPI();
-    } else {
-      console.log("SUCCES");
-    }
-    res.json().then((data) => console.log(data));
-  });
+const getPokemon = async (id) => {
+  const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+  const res = await fetch(url);
+  const pokemon = await res.json();
+  createPokemonCard(pokemon);
+};
 
 getPokemon(1);
 
@@ -29,3 +31,10 @@ cards.forEach((card) => {
 function errorMessageSomethingWrongWithAPI() {
   pokemonContainer.innerHTML = `<p class="errorMessage">Something went wrong with API - SORRY!</p>`;
 }
+
+function createPokemonCard(pokemon) {
+  console.log("create pokemon Card");
+  pokemonContainer.innerHTML = `<p>Pokemon id: ${pokemon.id} <p>`;
+}
+
+fetchPokemons();
