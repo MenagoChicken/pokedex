@@ -106,8 +106,8 @@ function createPokemonCard(pokemon) {
   card_face_back.classList.add("card_face--back");
   card_face_back.style.backgroundImage = `linear-gradient(
     to bottom right,
-    red,
-    blue 50%
+    #f4ccb6,
+    ${colors[pokemon.types[0].type["name"]]} 80%
   )`;
   card_inner.appendChild(card_face_back);
 
@@ -118,6 +118,7 @@ function createPokemonCard(pokemon) {
 
   // h2_back
   let h2_back = document.createElement("h2");
+  h2_back.innerText = String(pokemon.name).toUpperCase();
   card_content_back.appendChild(h2_back);
 
   // card_body_back
@@ -127,11 +128,18 @@ function createPokemonCard(pokemon) {
 
   // h3_back
   let h3_back = document.createElement("h3");
+  h3_back.innerText = "STATS";
   card_body_back.appendChild(h3_back);
 
   // p_stat
-  let p_stat = document.createElement("p");
-  card_body_back.appendChild(p_stat);
+  pokemon.stats.forEach((element) => {
+    let p_stat = document.createElement("p");
+    p_stat.innerText =
+      String(element.stat["name"]).toUpperCase() +
+      ": " +
+      String(element.base_stat);
+    card_body_back.appendChild(p_stat);
+  });
 }
 
 fetchPokemons();
