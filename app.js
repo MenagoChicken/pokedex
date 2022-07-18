@@ -1,7 +1,5 @@
 //declaring variables and constants
-const numberOfPokemons = 3;
-let pokemonContainer = document.querySelector("main");
-let cards;
+const numberOfPokemons = 150;
 
 const colors = {
   normal: "#a8a878",
@@ -40,78 +38,100 @@ const getPokemon = async (id) => {
   createPokemonCard(pokemon);
 };
 
-// image pokemon?.sprites?.front_default
-// id pokemon?.id
-// name pokemon?.name
-// type pokemon?.types[0]?.type["name"]
-// stat pokemon?.stats[0]?.base_stat
-
 function createPokemonCard(pokemon) {
-  pokemonContainer.innerHTML =
-    pokemonContainer.innerHTML +
-    `<div class="card">
-  <div class="card__inner">
-    <div class="card__face card__face--front" 
-    style= " 
-      background-image: linear-gradient(
-      to bottom right,
-      var(--primary),
-      ${colors[pokemon?.types[0]?.type["name"]]} 80%
-    );
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    " >
-      <div class="card__content">
-        <div class="card__header">
-          <img
-            src= ${pokemon?.sprites?.front_default}
-            alt="${pokemon?.name}"
-            height="96px"
-            width="96px"
-            class="pokemon-image"
-          />
-          <h2>${pokemon?.name}</h2>
-        </div>
-        <div class="card__body">
-          <h3>#${pokemon?.id}</h3>
-          <p>TYPE: ${pokemon?.types[0]?.type["name"]}</p>
-        </div>
-      </div>
-    </div>
-    <div class="card__face card__face--back">
-      <div class="card__content">
-        <div class="card__header">
-          <h2>${pokemon?.name}</h2>
-        </div>
-        <div class="card__body">
-          <article>
-            <h3>BASE STATS</h3>
-            <p>HP: ${pokemon?.stats[0]?.base_stat}</p>
-            <p>ATK: ${pokemon?.stats[1]?.base_stat}</p>
-            <p>DEF: ${pokemon?.stats[2]?.base_stat}</p>
-            <p>S-ATK: ${pokemon?.stats[3]?.base_stat}</p>
-            <p>S-DEF: ${pokemon?.stats[4]?.base_stat}</p>
-            <p>SPD: ${pokemon?.stats[5]?.base_stat}</p>
-          </article>
-        </div>
-      </div>
-    </div>
-  </div>
-</div><p>`;
-}
+  // card
+  let main = document.querySelector(".cards-container");
+  let card = document.createElement("div");
+  card.classList.add("card");
+  main.appendChild(card);
 
-fullyLoaded = window.addEventListener("load", (e) => console.log(e));
-if (fullyLoaded) {
-  console.log("page is fully loaded");
-  //select all cards
-  cards = document.querySelectorAll(".card__inner");
-  //add onclick functionality to each card
-  cards.forEach((card) => {
-    card.addEventListener("click", () => {
-      card.classList.toggle("is-flipped");
-    });
-  });
+  // div class="card_inner"
+  let card_inner = document.createElement("div");
+  card_inner.classList.add("card_inner");
+  card.appendChild(card_inner);
+
+  // div class="card_face card_face--front"
+  let card_face_front = document.createElement("div");
+  card_face_front.classList.add("card_face");
+  card_face_front.classList.add("card_face--front");
+  card_face_front.style.backgroundImage = `linear-gradient(
+    to bottom right,
+    #f4ccb6,
+    ${colors[pokemon.types[0].type["name"]]} 80%
+  )`;
+  card_inner.appendChild(card_face_front);
+
+  // card_content_front
+  let card_content_front = document.createElement("div");
+  card_content_front.classList.add("card_content");
+  card_face_front.appendChild(card_content_front);
+
+  // card_header_front
+  let card_header_front = document.createElement("div");
+  card_header_front.classList.add("card_header");
+  card_content_front.appendChild(card_header_front);
+
+  // image
+  let image = document.createElement("img");
+  image.classList.add("pokemon-image");
+  image.setAttribute("src", pokemon.sprites["front_default"]);
+  image.setAttribute("alt", pokemon.name);
+  image.setAttribute("height", "96px");
+  image.setAttribute("width", "96px");
+  card_content_front.appendChild(image);
+
+  // h2_front
+  let h2_front = document.createElement("h2");
+  h2_front.innerText = String(pokemon.name).toUpperCase();
+  card_content_front.appendChild(h2_front);
+
+  // card_body_front
+  let card_body_front = document.createElement("div");
+  card_body_front.classList.add("card_body");
+  card_content_front.appendChild(card_body_front);
+
+  // h3_front
+  let h3_front = document.createElement("h3");
+  h3_front.innerText = "#" + pokemon.id;
+  card_body_front.appendChild(h3_front);
+
+  // p_front
+  let p_front = document.createElement("p");
+  p_front.innerText = "Type: " + pokemon.types[0].type["name"];
+  card_body_front.appendChild(p_front);
+
+  // card_face card_face--back
+  let card_face_back = document.createElement("div");
+  card_face_back.classList.add("card_face");
+  card_face_back.classList.add("card_face--back");
+  card_face_back.style.backgroundImage = `linear-gradient(
+    to bottom right,
+    red,
+    blue 50%
+  )`;
+  card_inner.appendChild(card_face_back);
+
+  // div class="card__content"
+  let card_content_back = document.createElement("div");
+  card_content_back.classList.add("card_content");
+  card_face_back.appendChild(card_content_back);
+
+  // h2_back
+  let h2_back = document.createElement("h2");
+  card_content_back.appendChild(h2_back);
+
+  // card_body_back
+  let card_body_back = document.createElement("div");
+  card_body_back.classList.add("card_body");
+  card_content_back.appendChild(card_body_back);
+
+  // h3_back
+  let h3_back = document.createElement("h3");
+  card_body_back.appendChild(h3_back);
+
+  // p_stat
+  let p_stat = document.createElement("p");
+  card_body_back.appendChild(p_stat);
 }
 
 fetchPokemons();
