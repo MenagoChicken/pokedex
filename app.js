@@ -54,11 +54,7 @@ function createPokemonCard(pokemon) {
   let card_face_front = document.createElement("div");
   card_face_front.classList.add("card_face");
   card_face_front.classList.add("card_face--front");
-  card_face_front.style.backgroundImage = `linear-gradient(
-    to bottom right,
-    #f4ccb6,
-    ${colors[pokemon.types[0].type["name"]]} 80%
-  )`;
+  card_face_front.style.background = colors[pokemon.types[0].type["name"]];
   card_inner.appendChild(card_face_front);
 
   // card_content_front
@@ -104,11 +100,7 @@ function createPokemonCard(pokemon) {
   let card_face_back = document.createElement("div");
   card_face_back.classList.add("card_face");
   card_face_back.classList.add("card_face--back");
-  card_face_back.style.backgroundImage = `linear-gradient(
-    to bottom right,
-    #f4ccb6,
-    ${colors[pokemon.types[0].type["name"]]} 80%
-  )`;
+  card_face_back.style.background = colors[pokemon.types[0].type["name"]];
   card_inner.appendChild(card_face_back);
 
   // div class="card__content"

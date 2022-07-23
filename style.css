@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Maiden+Orange&display=swap");
 
 :root {
-  --background: #fdf5df;
-  --primary: #f4ccb6;
-  --h1: #5ebec4;
+  --background: #ffde00;
+  --primary: #b3a125;
+  --h1: #3b4cca;
 }
 
 /*********************************************** 
@@ -11,7 +11,7 @@ FONT CSS RULE
 
 font-family: 'Maiden Orange', cursive;
 ************************************************/
-
+/* =========== GLOBAL =========== */
 * {
   margin: 0;
   padding: 0;
@@ -38,7 +38,34 @@ main {
   max-width: 800px;
   margin: auto;
 }
+/* =========== END OF GLOBAL =========== */
 
+/* =========== Serach Bar =========== */
+#searchWrapper {
+  position: relative;
+  width: 30%;
+  margin: auto;
+}
+
+#searchBar {
+  width: 100%;
+  height: 32px;
+  border-radius: 3px;
+  border: 1px solid #eaeaea;
+  padding: 5px;
+  font-size: 12px;
+}
+
+#searchWrapper::after {
+  content: "🔍";
+  position: absolute;
+  top: 10px;
+  right: 0px;
+}
+
+/* =========== End of a Serach Bar =========== */
+
+/* =========== CARDS =========== */
 .cards-container {
   display: flex;
   flex-direction: row;
@@ -99,11 +126,6 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: linear-gradient(
-    to bottom left,
-    var(--primary),
-    var(--steel) 50%
-  );
   z-index: -1;
 }
 
@@ -112,7 +134,7 @@ main {
   margin: auto;
   margin-top: 4px;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   object-fit: cover;
 }
 
@@ -139,6 +161,8 @@ h2 {
   margin-top: 7px;
   text-transform: uppercase;
 }
+
+/* =========== END OF CARDS =========== */
 
 /* .errorMessage {
   font-family: Arial, Helvetica, sans-serif;
