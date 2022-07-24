@@ -1,5 +1,6 @@
 //declaring variables and constants
-const numberOfPokemons = 150;
+const numberOfPokemons = 10;
+const searchBar = document.getElementById("searchBar");
 
 const colors = {
   normal: "#a8a878",
@@ -35,6 +36,7 @@ const getPokemon = async (id) => {
   const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
   const res = await fetch(url);
   const pokemon = await res.json();
+  pokemons.push(pokemon);
   createPokemonCard(pokemon);
 };
 
