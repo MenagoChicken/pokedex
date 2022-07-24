@@ -1,7 +1,4 @@
-//declaring variables and constants
-const numberOfPokemons = 10;
-const searchBar = document.getElementById("searchBar");
-
+// ================= declaring variables and constants
 const colors = {
   normal: "#a8a878",
   fighting: "#c03028",
@@ -25,6 +22,15 @@ const colors = {
   shadow: "#682a68",
 };
 
+const numberOfPokemons = 10;
+let cards = [];
+let pokemons = [];
+const searchBar = document.querySelector("#searchBar");
+
+//=============== end of declaring variables and constants
+
+//=============== getting pokemons
+
 const fetchPokemons = async () => {
   for (let index = 1; index <= numberOfPokemons; index++) {
     await getPokemon(index);
@@ -37,8 +43,52 @@ const getPokemon = async (id) => {
   const res = await fetch(url);
   const pokemon = await res.json();
   pokemons.push(pokemon);
-  createPokemonCard(pokemon);
+  console.log("getPokemon() -> pokemon: " + pokemon.name);
 };
+
+fetchPokemons();
+
+//=============== end of getting pokemons
+
+/* ============ adding rotation efect =========== */
+
+// I know this is not the best solution but it works and at my level I'm very proud of my problem solving skills :D
+const addFlipACardFunction = setTimeout(addFlipToCard, 3000);
+
+function addFlipToCard() {
+  cards = document.querySelectorAll(".card_inner");
+  cards.forEach((card) => {
+    card.addEventListener("click", () => {
+      card.classList.toggle("is-flipped");
+    });
+  });
+}
+
+/* ============ end of rotation efect =========== */
+
+/* ============ filtering =========== */
+
+searchBar.addEventListener("keyup", (key) => {
+  let searchString = key.target.value;
+  let filterdPokemons = pokemons.filter((pokemon) => {
+    return pokemon.name.includes(searchString);
+  });
+  createPokemonCard(filterdPokemons);
+});
+
+/* ============ end of filtering =========== */
+
+/* ============ display pokemons =========== */
+
+const displayFirstListOfPokemons = setTimeout(firstListOfPokemons, 2000);
+
+function firstListOfPokemons() {
+  console.log("firstListOfPokemons()");
+  pokemons.forEach((pokemon) => {
+    createPokemonCard(pokemon);
+    console.log(pokemon);
+  });
+}
 
 function createPokemonCard(pokemon) {
   // card
@@ -136,4 +186,4 @@ function createPokemonCard(pokemon) {
   });
 }
 
-fetchPokemons();
+/* ============ end of display pokemons =========== */
