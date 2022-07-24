@@ -136,8 +136,6 @@ const pokemon2 = {
 
 const pokemons = [pokemon1, pokemon2];
 
-displayPokemons(pokemons);
-
 function displayPokemons(pokemonsList) {
   for (let index = 0; index < pokemons.length; index++) {
     createPokemonCard(pokemons[index]);
@@ -146,10 +144,12 @@ function displayPokemons(pokemonsList) {
 
 function createPokemonCard(pokemon) {
   // card
-  let main = document.querySelector(".cards-container");
+  let mainHTML = document.querySelector(".cards-container");
+  console.log("createPokemonCard");
+  console.log(mainHTML);
   let card = document.createElement("div");
   card.classList.add("card");
-  main.appendChild(card);
+  mainHTML.appendChild(card);
 
   // div class="card_inner"
   let card_inner = document.createElement("div");
@@ -242,5 +242,13 @@ function createPokemonCard(pokemon) {
 
 searchBar.addEventListener("keyup", (key) => {
   const searchString = key.target.value;
-  console.log(searchString);
+  const filteredPokemons = pokemons.filter((pokemon) => {
+    return pokemon.name.includes(searchString);
+  });
+  mainHTML = document.querySelector("main");
+  mainHTML = "";
+  console.log(mainHTML);
+  displayPokemons(filteredPokemons);
 });
+
+displayPokemons(pokemons);
