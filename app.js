@@ -86,10 +86,9 @@ function firstListOfPokemons() {
   console.log("firstListOfPokemons()");
   pokemons.forEach((pokemon) => {
     createPokemonCard(pokemon);
-    console.log(pokemon);
+    console.log(pokemon.types[0].type["name"]);
   });
 }
-
 function createPokemonCard(pokemon) {
   // card
   let main = document.querySelector(".cards-container");
@@ -106,7 +105,7 @@ function createPokemonCard(pokemon) {
   let card_face_front = document.createElement("div");
   card_face_front.classList.add("card_face");
   card_face_front.classList.add("card_face--front");
-  card_face_front.style.background = colors[pokemon.types[0].type["name"]];
+  // card_face_front.style.background = colors[pokemon.types[0].type["name"]];
   card_inner.appendChild(card_face_front);
 
   // card_content_front
@@ -122,7 +121,7 @@ function createPokemonCard(pokemon) {
   // image
   let image = document.createElement("img");
   image.classList.add("pokemon-image");
-  image.setAttribute("src", pokemon.sprites["front_default"]);
+  // image.setAttribute("src", pokemon.sprites["front_default"]);
   image.setAttribute("alt", pokemon.name);
   image.setAttribute("height", "96px");
   image.setAttribute("width", "96px");
@@ -145,14 +144,14 @@ function createPokemonCard(pokemon) {
 
   // p_front
   let p_front = document.createElement("p");
-  p_front.innerText = "Type: " + pokemon.types[0].type["name"];
+  // p_front.innerText = "Type: " + pokemon.types[0].type["name"];
   card_body_front.appendChild(p_front);
 
   // card_face card_face--back
   let card_face_back = document.createElement("div");
   card_face_back.classList.add("card_face");
   card_face_back.classList.add("card_face--back");
-  card_face_back.style.background = colors[pokemon.types[0].type["name"]];
+  // card_face_back.style.background = colors[pokemon.types[0].type["name"]];
   card_inner.appendChild(card_face_back);
 
   // div class="card__content"
@@ -175,15 +174,15 @@ function createPokemonCard(pokemon) {
   h3_back.innerText = "STATS";
   card_body_back.appendChild(h3_back);
 
-  // p_stat
-  pokemon.stats.forEach((element) => {
-    let p_stat = document.createElement("p");
-    p_stat.innerText =
-      String(element.stat["name"]).toUpperCase() +
-      ": " +
-      String(element.base_stat);
-    card_body_back.appendChild(p_stat);
-  });
+  //p_stat;
+  // pokemon.stats.forEach((element) => {
+  //   let p_stat = document.createElement("p");
+  //   p_stat.innerText =
+  //     String(element.stat["name"]).toUpperCase() +
+  //     ": " +
+  //     String(element.base_stat);
+  //   card_body_back.appendChild(p_stat);
+  // });
 }
 
 /* ============ end of display pokemons =========== */
