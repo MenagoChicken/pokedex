@@ -136,8 +136,12 @@ const pokemon2 = {
 
 const pokemons = [pokemon1, pokemon2];
 
-for (let index = 0; index < pokemons.length; index++) {
-  createPokemonCard(pokemons[index]);
+displayPokemons(pokemons);
+
+function displayPokemons(pokemonsList) {
+  for (let index = 0; index < pokemons.length; index++) {
+    createPokemonCard(pokemons[index]);
+  }
 }
 
 function createPokemonCard(pokemon) {
@@ -235,3 +239,8 @@ function createPokemonCard(pokemon) {
     card_body_back.appendChild(p_stat);
   });
 }
+
+searchBar.addEventListener("keyup", (key) => {
+  const searchString = key.target.value;
+  console.log(searchString);
+});
