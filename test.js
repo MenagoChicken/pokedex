@@ -246,6 +246,7 @@ searchBar.addEventListener("keyup", (key) => {
     return pokemon.name.includes(searchString);
   });
   mainHTML = document.querySelector("main");
+
   mainHTML = "";
   console.log(mainHTML);
   displayPokemons(filteredPokemons);

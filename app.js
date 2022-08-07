@@ -22,6 +22,7 @@ const colors = {
   shadow: "#682a68",
 };
 
+let main = document.querySelector(".cards-container");
 const numberOfPokemons = 10;
 let cards = [];
 let pokemons = [];
@@ -48,33 +49,15 @@ const getPokemon = async (id) => {
 
 fetchPokemons();
 
-//=============== end of getting pokemons
-
-/* ============ adding rotation efect =========== */
-
-// I know this is not the best solution but it works and at my level I'm very proud of my problem solving skills :D
-const addFlipACardFunction = setTimeout(addFlipToCard, 3000);
-
-function addFlipToCard() {
-  cards = document.querySelectorAll(".card_inner");
-  cards.forEach((card) => {
-    card.addEventListener("click", () => {
-      card.classList.toggle("is-flipped");
-    });
-  });
-}
-
-/* ============ end of rotation efect =========== */
-
 /* ============ filtering =========== */
 
-searchBar.addEventListener("keyup", (key, pokemons) => {
-  let searchString = key.target.value;
-  let filterdPokemons = pokemons.filter((pokemon) => {
-    return pokemon.name.includes(searchString);
-  });
-  createPokemonCard(filterdPokemons);
-});
+// searchBar.addEventListener("keyup", (key, pokemons) => {
+//   let searchString = key.target.value;
+//   let filterdPokemons = pokemons.filter((pokemon) => {
+//     return pokemon.name.includes(searchString);
+//   });
+//   createPokemonCard(filterdPokemons);
+// });
 
 /* ============ end of filtering =========== */
 
@@ -89,9 +72,9 @@ function firstListOfPokemons() {
     console.log(pokemon.types[0].type["name"]);
   });
 }
+
 function createPokemonCard(pokemon) {
   // card
-  let main = document.querySelector(".cards-container");
   let card = document.createElement("div");
   card.classList.add("card");
   main.appendChild(card);
@@ -99,13 +82,17 @@ function createPokemonCard(pokemon) {
   // div class="card_inner"
   let card_inner = document.createElement("div");
   card_inner.classList.add("card_inner");
+  //rotation effect
+  card_inner.addEventListener("click", () => {
+    card_inner.classList.toggle("is-flipped");
+  });
   card.appendChild(card_inner);
 
   // div class="card_face card_face--front"
   let card_face_front = document.createElement("div");
   card_face_front.classList.add("card_face");
   card_face_front.classList.add("card_face--front");
-  // card_face_front.style.background = colors[pokemon.types[0].type["name"]];
+  card_face_front.style.background = colors[pokemon.types[0].type["name"]];
   card_inner.appendChild(card_face_front);
 
   // card_content_front
@@ -121,7 +108,7 @@ function createPokemonCard(pokemon) {
   // image
   let image = document.createElement("img");
   image.classList.add("pokemon-image");
-  // image.setAttribute("src", pokemon.sprites["front_default"]);
+  image.setAttribute("src", pokemon.sprites["front_default"]);
   image.setAttribute("alt", pokemon.name);
   image.setAttribute("height", "96px");
   image.setAttribute("width", "96px");
@@ -144,14 +131,14 @@ function createPokemonCard(pokemon) {
 
   // p_front
   let p_front = document.createElement("p");
-  // p_front.innerText = "Type: " + pokemon.types[0].type["name"];
+  p_front.innerText = "Type: " + pokemon.types[0].type["name"];
   card_body_front.appendChild(p_front);
 
   // card_face card_face--back
   let card_face_back = document.createElement("div");
   card_face_back.classList.add("card_face");
   card_face_back.classList.add("card_face--back");
-  // card_face_back.style.background = colors[pokemon.types[0].type["name"]];
+  card_face_back.style.background = colors[pokemon.types[0].type["name"]];
   card_inner.appendChild(card_face_back);
 
   // div class="card__content"
@@ -175,14 +162,14 @@ function createPokemonCard(pokemon) {
   card_body_back.appendChild(h3_back);
 
   //p_stat;
-  // pokemon.stats.forEach((element) => {
-  //   let p_stat = document.createElement("p");
-  //   p_stat.innerText =
-  //     String(element.stat["name"]).toUpperCase() +
-  //     ": " +
-  //     String(element.base_stat);
-  //   card_body_back.appendChild(p_stat);
-  // });
+  pokemon.stats.forEach((element) => {
+    let p_stat = document.createElement("p");
+    p_stat.innerText =
+      String(element.stat["name"]).toUpperCase() +
+      ": " +
+      String(element.base_stat);
+    card_body_back.appendChild(p_stat);
+  });
 }
 
 /* ============ end of display pokemons =========== */
