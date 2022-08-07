@@ -23,10 +23,9 @@ const colors = {
 };
 
 let main = document.querySelector(".cards-container");
-const numberOfPokemons = 10;
-let cards = [];
-let pokemons = [];
 const searchBar = document.querySelector("#searchBar");
+const numberOfPokemons = 150;
+let pokemons = [];
 
 //=============== end of declaring variables and constants
 
@@ -44,40 +43,32 @@ const getPokemon = async (id) => {
   const res = await fetch(url);
   const pokemon = await res.json();
   pokemons.push(pokemon);
-  console.log(pokemon);
+  createPokemonCard(pokemon);
 };
-
 fetchPokemons();
 
 /* ============ filtering =========== */
 
-// searchBar.addEventListener("keyup", (key, pokemons) => {
-//   let searchString = key.target.value;
-//   let filterdPokemons = pokemons.filter((pokemon) => {
-//     return pokemon.name.includes(searchString);
-//   });
-//   createPokemonCard(filterdPokemons);
-// });
+searchBar.addEventListener("keyup", (key) => {
+  let searchString = key.target.value;
+  const filterdPokemons = pokemons.filter((pokemon) => {
+    return pokemon.name.includes(searchString);
+  });
+  main.innerHTML = "";
+  filterdPokemons.forEach((p) => {
+    createPokemonCard(p);
+  });
+});
 
 /* ============ end of filtering =========== */
 
 /* ============ display pokemons =========== */
 
-const displayFirstListOfPokemons = setTimeout(firstListOfPokemons, 2000);
-
-function firstListOfPokemons() {
-  console.log("firstListOfPokemons()");
-  pokemons.forEach((pokemon) => {
-    createPokemonCard(pokemon);
-    console.log(pokemon.types[0].type["name"]);
-  });
-}
-
 function createPokemonCard(pokemon) {
   // card
+  console.log("create pokemon is ins progres");
   let card = document.createElement("div");
   card.classList.add("card");
-  main.appendChild(card);
 
   // div class="card_inner"
   let card_inner = document.createElement("div");
@@ -92,7 +83,7 @@ function createPokemonCard(pokemon) {
   let card_face_front = document.createElement("div");
   card_face_front.classList.add("card_face");
   card_face_front.classList.add("card_face--front");
-  card_face_front.style.background = colors[pokemon.types[0].type["name"]];
+  card_face_front.style.background = colors[pokemon?.types[0].type["name"]];
   card_inner.appendChild(card_face_front);
 
   // card_content_front
@@ -108,15 +99,15 @@ function createPokemonCard(pokemon) {
   // image
   let image = document.createElement("img");
   image.classList.add("pokemon-image");
-  image.setAttribute("src", pokemon.sprites["front_default"]);
-  image.setAttribute("alt", pokemon.name);
+  image.setAttribute("src", pokemon?.sprites["front_default"]);
+  image.setAttribute("alt", pokemon?.name);
   image.setAttribute("height", "96px");
   image.setAttribute("width", "96px");
   card_content_front.appendChild(image);
 
   // h2_front
   let h2_front = document.createElement("h2");
-  h2_front.innerText = String(pokemon.name).toUpperCase();
+  h2_front.innerText = String(pokemon?.name).toUpperCase();
   card_content_front.appendChild(h2_front);
 
   // card_body_front
@@ -126,19 +117,19 @@ function createPokemonCard(pokemon) {
 
   // h3_front
   let h3_front = document.createElement("h3");
-  h3_front.innerText = "#" + pokemon.id;
+  h3_front.innerText = "#" + pokemon?.id;
   card_body_front.appendChild(h3_front);
 
   // p_front
   let p_front = document.createElement("p");
-  p_front.innerText = "Type: " + pokemon.types[0].type["name"];
+  p_front.innerText = "Type: " + pokemon?.types[0].type["name"];
   card_body_front.appendChild(p_front);
 
   // card_face card_face--back
   let card_face_back = document.createElement("div");
   card_face_back.classList.add("card_face");
   card_face_back.classList.add("card_face--back");
-  card_face_back.style.background = colors[pokemon.types[0].type["name"]];
+  card_face_back.style.background = colors[pokemon?.types[0].type["name"]];
   card_inner.appendChild(card_face_back);
 
   // div class="card__content"
@@ -148,7 +139,7 @@ function createPokemonCard(pokemon) {
 
   // h2_back
   let h2_back = document.createElement("h2");
-  h2_back.innerText = String(pokemon.name).toUpperCase();
+  h2_back.innerText = String(pokemon?.name).toUpperCase();
   card_content_back.appendChild(h2_back);
 
   // card_body_back
@@ -165,11 +156,13 @@ function createPokemonCard(pokemon) {
   pokemon.stats.forEach((element) => {
     let p_stat = document.createElement("p");
     p_stat.innerText =
-      String(element.stat["name"]).toUpperCase() +
+      String(element?.stat["name"]).toUpperCase() +
       ": " +
-      String(element.base_stat);
+      String(element?.base_stat);
     card_body_back.appendChild(p_stat);
   });
+
+  main.appendChild(card);
 }
 
 /* ============ end of display pokemons =========== */
